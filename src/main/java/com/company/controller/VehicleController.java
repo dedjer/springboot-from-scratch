@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.company.entity.Vehicle;
+import com.company.model.Vehicle;
 
 @RestController
-@RequestMapping(path="/vehicle")        //Add path for this controller
+@RequestMapping(path="/vehicles")        //Add path for this controller
 public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
@@ -37,8 +37,14 @@ public class VehicleController {
     }
 
     // Delete a Vehicle
-    @DeleteMapping("/remove/{id}")
-    void deleteVehicle(@PathVariable int id) {
+    @DeleteMapping(path="/remove/{id}")
+    void deleteVehicle(@PathVariable long id) {
         vehicleRepository.deleteById(id);
+    }
+
+    // Get Vehicle
+    @GetMapping(path="/{id}")
+    public @ResponseBody Vehicle getVehicle(@PathVariable long id) {
+        return vehicleRepository.findById(id).get();
     }
 }
