@@ -16,7 +16,7 @@ public class Address implements Serializable {
     private String state;
     private String zipcode;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="customer_id")
     private Customer customer;
 

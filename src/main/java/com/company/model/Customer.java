@@ -19,8 +19,8 @@ public class Customer implements Serializable {
     @Column(name="fullname")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="customer_id")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "customer")
+//    @JoinColumn(name="customer_id")
     private List<Address> addresses = new ArrayList<>();
 
     public Long getId(){
@@ -47,6 +47,16 @@ public class Customer implements Serializable {
         this.addresses = addresses;
     }
 
+    //This will run when an AddressList is saved to the Customer.
+    //Allows the client to PUT (add) an address to the customer and persists the change to the database
+    //Thanks to https://reflectoring.io/relations-with-spring-data-rest/ for explaining bi-directional persistence
+    @PrePersist
+    @PreUpdate
+    public void updateAddressAssociation(){
+        for(Address address : this.addresses){
+            address.setCustomer(this);
+        }
+    }
 
     /**
      *
