@@ -6,7 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 /*
-* This class was only created to test my project because you can't use annotations inside the static main method.
+ * This class was only created to test my project because you can't use annotations inside the static main method.
+ * UPDATE: You can create an overridden main to get this code to work.
  */
 @Component
 public class VehicleRunner implements CommandLineRunner {

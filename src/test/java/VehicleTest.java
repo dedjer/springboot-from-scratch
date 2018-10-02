@@ -3,7 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class VehicleTests {
+public class VehicleTest {
 
     private Vehicle v;
 

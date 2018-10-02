@@ -19,8 +19,9 @@ public class Customer implements Serializable {
     @Column(name="fullname")
     private String name;
 
+    //CascadType.ALL and orphanRemoval=true will delete the child addresses if the parent is deleted
+    //This list address property is mapped by the Address.customer property
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "customer")
-//    @JoinColumn(name="customer_id")
     private List<Address> addresses = new ArrayList<>();
 
     public Long getId(){
