@@ -25,4 +25,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     @Query("select c from Customer c where c.name = :name")
     List<Customer> queryByName(@Param("name")String name);
 
+    List<Customer> findByVehiclesMakeLike(String make);
 }

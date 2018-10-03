@@ -90,4 +90,7 @@ public class Customer implements Serializable {
         }
     }
 
+    public void addVehicle(Vehicle v) {
+        this.vehicles.add(v);
+    }
 }

@@ -45,7 +45,7 @@ public class Vehicle implements Serializable {
         this.make = make;
     }
 
-    public Set<Customer> getCustomer() {
+    public Set<Customer> getCustomers() {
         return customers;
     }
 

@@ -3,6 +3,7 @@ package integration;
 import com.company.Main;
 import com.company.model.Address;
 import com.company.model.Customer;
+import com.company.model.Vehicle;
 import com.company.repository.CustomerRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -127,5 +128,28 @@ public class CustomerRepositoryIntegrationTest{
 
         // then
         assertEquals(c, result);
+    }
+
+    @Test
+    public void whenFindByVehiclesMakeReturnsCustomers() throws Exception  {
+        // given 2 customers residing in the same State
+
+        final String make = "MyMake";
+
+        Customer c = new Customer();
+        c.setName("Joe");
+
+        Vehicle v = new Vehicle();
+        v.setMake(make);
+
+        c.addVehicle(v);
+        customerRepository.save(c);
+
+        // when
+        List<Customer> result = customerRepository.findByVehiclesMakeLike(make);
+
+        // then
+        assertEquals(1, result.size());
+
     }
 }

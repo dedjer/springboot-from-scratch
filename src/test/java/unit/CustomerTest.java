@@ -14,13 +14,15 @@ import static org.junit.Assert.assertEquals;
 //Test classes must end with the name "Test" or "Tests" to ensure maven picks them up
 //I renamed classes to see if mvn would still pick the mun
 public class CustomerTest {
-    private Customer c;
+    private Customer customer;
+    private List<Address> addresses;
     private Set<Vehicle> vehicles;
 
     @Before
     public void setup(){
-        c = new Customer();
-        vehicles = c.getVehicles();
+        customer = new Customer();
+        addresses = customer.getAddresses();
+        vehicles = customer.getVehicles();
     }
 
     // MeanBean POJO Tester
@@ -32,8 +34,6 @@ public class CustomerTest {
 
     @Test
     public void GetAddressesWorks(){
-        List<Address> addresses = new ArrayList<>();
-
         Address a = new Address();
         a.setStreet("Michigan Ave.");
         a.setCity("Chicago");
@@ -41,9 +41,9 @@ public class CustomerTest {
         a.setZipcode("60625");
 
         addresses.add(a);
-        c.setAddresses(addresses);
+        customer.setAddresses(addresses);
 
-        assertEquals(a, c.getAddresses().get(0));
+        assertEquals(a, customer.getAddresses().get(0));
     }
 
     @Test
@@ -53,9 +53,9 @@ public class CustomerTest {
         v.setMake("Hummer");
 
         vehicles.add(v);
-        c.setVehicles(vehicles);
+        customer.setVehicles(vehicles);
 
-        Vehicle result = c.getVehicles().stream().findFirst().get();
+        Vehicle result = customer.getVehicles().stream().findFirst().get();
 
         assertEquals(v, result);
     }
