@@ -11,10 +11,6 @@ public class VehicleService {
     VehicleRepository vehicleRepository;
 
     public void saveVehicle() {
-        Vehicle v = new Vehicle();
 
-        v.setMake("Hummer");
-
-        vehicleRepository.save(v);
     }
 }

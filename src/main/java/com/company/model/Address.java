@@ -1,5 +1,7 @@
 package com.company.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,7 +10,8 @@ import java.io.Serializable;
 public class Address implements Serializable {
     @Id
     @Column(name="address_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
     private String street;

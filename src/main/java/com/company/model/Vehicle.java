@@ -1,8 +1,6 @@
 package com.company.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,14 +19,15 @@ public class Vehicle implements Serializable {
 
     @Id
     @Column(name="vehicle_id")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
+    @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
     @Column(name="make")
     private String make;
 
-//    @ManyToMany(mappedBy = "vehicles", fetch = FetchType.LAZY)
-//    private Set<Customer> customers;
+    @ManyToMany(mappedBy = "vehicles")
+    private Set<Customer> customers = new HashSet<>();
 
     public long getId() {
         return id;
@@ -46,16 +45,15 @@ public class Vehicle implements Serializable {
         this.make = make;
     }
 
-/*
- * The @JsonManagedReference annotation removed an infinite recursion because
- * I have a many to many relationship between customer and vehicle
-*/
-//    @JsonManagedReference
-//    public Set<Customer> getCustomers() {
-//        return customers;
-//    }
-//
-//    public void setCustomers(Set<Customer> customers) {
-//        this.customers = customers;®
-//    }
+    public Set<Customer> getCustomer() {
+        return customers;
+    }
+
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
+    }
+
+    public void setCustomer(Customer customer){
+        this.customers.add(customer);
+    }
 }

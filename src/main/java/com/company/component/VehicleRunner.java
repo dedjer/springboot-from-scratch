@@ -16,7 +16,7 @@ public class VehicleRunner implements CommandLineRunner {
 
     @Override
     public void run(String...args) throws Exception {
-        vehicleService.saveVehicle();
+        //vehicleService.saveVehicle();
 
     }
 }

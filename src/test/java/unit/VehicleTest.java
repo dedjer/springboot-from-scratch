@@ -1,3 +1,5 @@
+package unit;
+
 import com.company.model.Vehicle;
 import org.junit.Before;
 import org.junit.Test;
