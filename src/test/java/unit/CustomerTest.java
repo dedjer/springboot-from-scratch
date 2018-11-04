@@ -33,7 +33,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void GetAddressesWorks(){
+    public void getAddressesWorks(){
         Address a = new Address();
         a.setStreet("Michigan Ave.");
         a.setCity("Chicago");
@@ -47,7 +47,7 @@ public class CustomerTest {
     }
 
     @Test
-    public void GetVehiclesWorks(){
+    public void getVehiclesWorks(){
         Vehicle v = new Vehicle();
         v.setId(1);
         v.setMake("Hummer");

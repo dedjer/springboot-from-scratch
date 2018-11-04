@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.company.model.Vehicle;
 
 @RestController
-@RequestMapping(path="/vehicles")        //Add path for this controller
+@RequestMapping(path="/vehicles")        //Add URL path for this controller
 public class VehicleController {
     @Autowired
     private VehicleService vehicleService;

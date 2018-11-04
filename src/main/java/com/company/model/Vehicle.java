@@ -1,5 +1,7 @@
 package com.company.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -21,20 +23,21 @@ public class Vehicle implements Serializable {
     @Column(name="vehicle_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native", strategy = "native")
-    private long id;
+    private Long Id;
 
     @Column(name="make")
     private String make;
 
     @ManyToMany(mappedBy = "vehicles")
+    @JsonBackReference
     private Set<Customer> customers = new HashSet<>();
 
     public long getId() {
-        return id;
+        return Id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long Id) {
+        this.Id = Id;
     }
 
     public String getMake() {

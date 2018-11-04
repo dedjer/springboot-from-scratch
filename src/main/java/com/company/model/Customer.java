@@ -1,5 +1,6 @@
 package com.company.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -21,7 +22,7 @@ public class Customer implements Serializable {
     @Column(name="customer_id")
     @GeneratedValue(strategy = GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native", strategy = "native")
-    private Long id;
+    private Long Id;
 
     @Column(name="fullname")
     private String name;
@@ -30,6 +31,7 @@ public class Customer implements Serializable {
     //This list address property is mapped by the Address.customer property
     //UPDATE: 10/2/2018 Had to remove "orphanRemoval=true" because it prevented me from creating associations
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "customer")
+    @JsonManagedReference
     private List<Address> addresses = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -38,14 +40,15 @@ public class Customer implements Serializable {
             joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "vehicle_id")
     )
+    @JsonManagedReference
     private Set<Vehicle> vehicles = new HashSet<>();
 
     public Long getId(){
-        return id;
+        return Id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long Id) {
+        this.Id = Id;
     }
 
     public String getName() {

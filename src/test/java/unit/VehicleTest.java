@@ -29,7 +29,7 @@ public class VehicleTest {
     }
 
     @Test
-    public void GetCustomersWorks(){
+    public void getCustomersWorks(){
         Customer c = new Customer();
         c.setId(1);
         c.setName("Test Customer");
