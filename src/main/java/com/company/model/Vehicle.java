@@ -25,8 +25,14 @@ public class Vehicle implements Serializable {
     @GenericGenerator(name = "native", strategy = "native")
     private Long Id;
 
+    @Column(name="year")
+    private String year;
+
     @Column(name="make")
     private String make;
+
+    @Column(name="model")
+    private String model;
 
     @ManyToMany(mappedBy = "vehicles")
     @JsonBackReference
@@ -58,5 +64,21 @@ public class Vehicle implements Serializable {
 
     public void setCustomer(Customer customer){
         this.customers.add(customer);
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 }
