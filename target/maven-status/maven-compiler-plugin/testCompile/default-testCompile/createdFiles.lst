@@ -1,0 +1,4 @@
+unit/AddressTest.class
+unit/VehicleTest.class
+integration/CustomerRepositoryIntegrationTest.class
+unit/CustomerTest.class

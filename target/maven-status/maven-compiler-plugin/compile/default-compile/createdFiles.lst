@@ -1,0 +1,11 @@
+com/company/Main.class
+com/company/controller/VehicleController.class
+com/company/service/VehicleService.class
+com/company/repository/VehicleRepository.class
+com/company/model/Address.class
+com/company/repository/CustomerRepository.class
+com/company/controller/CustomerController.class
+com/company/component/VehicleRunner.class
+com/company/model/Customer.class
+com/company/repository/AddressRepository.class
+com/company/model/Vehicle.class
